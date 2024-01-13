@@ -59,21 +59,27 @@
 
     <!-- Intégration de l'iframe -->
     <iframe width="100%" height="482" frameborder="0" src="https://observablehq.com/embed/80fb5593047b058e?cells=chart"></iframe>
-    <div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/16115934"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-
+    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/16134730"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+    <div class="flourish-embed flourish-pictogram" data-src="visualisation/16134439"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
     <script>
+        // Fonction pour générer du texte aléatoire
+        function generateRandomText() {
+            const words = ['Lorem', 'Ipsum', 'Dolor', 'Sit', 'Amet', 'Consectetur', 'Adipiscing', 'Elit'];
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             // Exemple de données
             const topScorers = [
-                { name: 'Cristiano Ronaldo', goals: 805, image: 'ronaldo.jpg', description: 'Légendaire buteur portugais.' },
-                { name: 'Lionel Messi', goals: 798, image: 'messi.jpg', description: 'Magicien argentin du ballon rond.' },
-                // ... Ajoutez d'autres joueurs
+                { name: 'Player 1', image: 'image1.jpg', description: 'Description 1', goals: 10 },
+                { name: 'Player 2', image: 'image2.jpg', description: 'Description 2', goals: 8 },
+                { name: 'Player 3', image: 'image3.jpg', description: 'Description 3', goals: 7 },
             ];
 
             const topScorersContainer = document.getElementById('topScorers');
 
             // Parcours des joueurs pour les afficher
-            topScorers.forEach(player => {
+            topScorers.forEach((player, index) => {
                 const playerElement = document.createElement('div');
                 playerElement.classList.add('player');
 
@@ -88,6 +94,13 @@
                 playerElement.appendChild(playerInfo);
 
                 topScorersContainer.appendChild(playerElement);
+
+                // Ajout de texte aléatoire entre les joueurs (sauf après le dernier joueur)
+                if (index < topScorers.length - 1) {
+                    const randomText = document.createElement('div');
+                    randomText.textContent = generateRandomText();
+                    topScorersContainer.appendChild(randomText);
+                }
             });
         });
     </script>
